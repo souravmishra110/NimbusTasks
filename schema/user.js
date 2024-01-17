@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     username: {
         type: String,
         required: true,
@@ -25,5 +27,14 @@ const userSchema = new mongoose.Schema({
     },
 });
 
+// Hash the password before saving it to the database
+userSchema.pre('save', async function (next) {
+    const user = this;
+    if (user.isModified('password')) {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
+    }
+    next();
+});
 const User = mongoose.model('User', userSchema);
 module.exports = User;

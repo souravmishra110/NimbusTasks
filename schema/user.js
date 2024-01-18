@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    status: { // 1- Active, 0- Deleted
+        type: Number,
+        default: 1
+    }
 });
 
 // Hash the password before saving it to the database

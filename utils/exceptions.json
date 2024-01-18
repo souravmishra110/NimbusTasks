@@ -1,4 +1,7 @@
 {
     "10200": "Operation Performed Successfully.",
+    "10201": "User doesn't exist.",
+    "10202": "Incorrect Password.",
+    "10203": "Invalid parameter",
     "10400": "Something went wrong."
 }

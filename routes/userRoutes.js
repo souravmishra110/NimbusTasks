@@ -1,8 +1,8 @@
 // const express = require('express');
 // const router = express.Router();
 
-const { addUser, listUser } = require("../controllers/userController");
-const { validateAddUser } = require("../validators/userValidator");
+const { addUser, listUser, login } = require("../controllers/userController");
+const { validateAddUser, validateLogin } = require("../validators/userValidator");
 
 
 
@@ -11,6 +11,7 @@ module.exports = function (settings){
     
     app.get('/users/listUser', listUser);
     
-    app.post('/users/addUser', validateAddUser, addUser);
+    app.post('/users/signup', validateAddUser, addUser);
 
+    app.post('/users/login', validateLogin, login);
 };

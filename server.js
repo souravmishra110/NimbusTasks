@@ -23,7 +23,7 @@ let settings = {
 }
 
 require(__dirname+"/routes/userRoutes.js")(settings);
-
+require(__dirname+"/routes/taskRoutes.js")(settings);
 
 const port = 3000; // Set your desired port
 
